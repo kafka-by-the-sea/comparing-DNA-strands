@@ -1,10 +1,12 @@
-# comparing-DNA-strands
+<?php
 
-## 使用hamming distance 來解這個問題
-- 可google hamming distance來了解他的定義
+require_once 'vendor/autoload.php';
 
-## 寫法一(用for來做)
-```php
+//          1 1 11 1 1111 111 11 
+$strandA = "ACCGGCCTCCGCAAGGCGCG";
+$strandB = "GCGGTGCACAAGCAATTGAC";
+
+//寫法一
 function hammingDistance($strandA, $strandB)
 {
     $distance = 0;
@@ -14,10 +16,8 @@ function hammingDistance($strandA, $strandB)
 
     return $distance;
 }
-```
 
-## 寫法二(用zip+map+sum來做)
-```php
+//寫法二
 function hammingDistance($strandA, $strandB)
 {
     return collect(str_split($strandA))
@@ -27,4 +27,5 @@ function hammingDistance($strandA, $strandB)
                 return $a === $b ? 0 : 1;
             })->sum();
 }
-```
+
+dd(hammingDistance($strandA, $strandB));
